@@ -251,14 +251,21 @@ a{
     justify-content: space-evenly;
     align-items: center;
     gap: 32px;
-    width: fit-content;
+    margin-bottom: 40px;
+}
+
+.mascot-accept-cont {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 32px;
     margin-bottom: 40px;
 }
 
 .mascot-color-o {
     background-color: #D9D9D9;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,8 +273,8 @@ a{
 
 .mascot-color1 {
     background-color: #075880;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -275,8 +282,8 @@ a{
 
 .mascot-color2 {
     background-color: #A0E4FF;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -284,8 +291,8 @@ a{
 
 .mascot-color3 {
     background-color: #FFFDFA;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,8 +300,6 @@ a{
 
 .icons {
     display: flex;
-    margin-bottom: 64px;
-    align-items: center;
 }
 
 .hr-1 {
@@ -304,6 +309,14 @@ a{
 .hr-2 {
     margin-top: 32px;
     margin-bottom: 30px;
+}
+
+.imgs {
+    display: flex;
+}
+
+.imgs > p {
+    margin-left: 32px;
 }
 
 
