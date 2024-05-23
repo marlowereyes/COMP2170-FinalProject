@@ -1,69 +1,111 @@
 * {
     margin: 0;
+    padding: 0;
     font-family: Lexend;
 }
 
 body {
-    margin: 0px 240px;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 footer {
     padding-top: 20px;
     padding-bottom: 20px;
-    position: relative;
+    position: fixed;
     bottom: 0;
+    width: 100%;
     text-align: center;
     background-color: #075880;
     color: #ECEBE9;
 }
 
-.de_main {
-    
+#player {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120%; /* Increase the width slightly */
+    height: 120%;
+    pointer-events: none; /* Make the video unclickable */
+    z-index: -1; /* Place it behind other elements */
+    margin-left: -12rem;
+    opacity: 0; /* Initially make the video invisible */
+    transition: opacity 8s; /* Apply transition effect to opacity */
+}
+
+#player.loaded {
+    opacity: 1; /* Fade in the video when the 'loaded' class is added */
+    transition: opacity 2s 1s;
+}
+
+.de-main {
+    position: relative; /* Ensure main content stacks on top */
+    z-index: 1; /* Ensure main content is above the video */
 }
 
 .click_this_button_now {
-    display: flex;
-    justify-content: center;
+    position: fixed;
 }
 
 .the_button {
-    width: 18rem;
-    height: 3.5rem; 
-    background-color: #5C5D8D;
-    color: whitesmoke;
-    border-radius: 10px;
-    border: none;
+    display: flex;
+    justify-content: center;
+    width: 15rem;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute; /* Position the button relative to its containing element */
+    background-color: #8ec0df;
+    border: 3px solid #6987C9;
+    border-radius: 0.5rem;
+    color: white;
 }
 
-.nav{
+.alternatively__button {
+    display: flex;
+    justify-content: center;
+    width: 23rem;
+    padding: 1rem;
+    margin-top: 34rem;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute; /* Position the button relative to its containing element */
+    background-color: #8ec0df;
+    border: 3px solid #6987C9;
+    border-radius: 0.5rem;
+    color: white;
+    display: none;
+}
+
+.nav {
     background-color: #075880;
     height: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding:0 32px 0 32px;
+    padding: 0 32px;
 }
 
-.cursor {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red; /* You can change the color */
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-a:visited{
+a:visited {
     color: #ECEBE9;
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
-a{
+a {
     color: #ECEBE9;
     text-decoration: none;
+}
+
+.nav__buttons p {
+    display: flex;
+    gap: 2rem;
 }

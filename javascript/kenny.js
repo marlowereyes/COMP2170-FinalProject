@@ -1,45 +1,93 @@
-// Array to store positions of existing cursors
-const cursorPositions = [];
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.the_button');
+  const offset = 50;
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const buttonWidth = button.offsetWidth;
+  const buttonHeight = button.offsetHeight;
 
-// Function to create a dummy cursor
-function createCursor() {
-  const cursor = document.createElement('div');
-  cursor.className = 'cursor';
-  document.body.appendChild(cursor);
-  moveCursor(cursor);
-}
+  // Calculate initial position for the button (center of the viewport)
+  const initialButtonX = (viewportWidth - buttonWidth) / 2;
+  const initialButtonY = (viewportHeight - buttonHeight) / 3;
 
-// Function to continuously move the cursor
-function moveCursor(cursor) {
-  const minDistance = 50; // Minimum distance between cursors
+  // Apply initial position
+  button.style.left = `${initialButtonX}px`;
+  button.style.top = `${initialButtonY}px`;
 
-  // Calculate new random position
-  let newX, newY;
-  do {
-    newX = Math.random() * window.innerWidth;
-    newY = Math.random() * window.innerHeight;
-    // Check distance from other cursors
-    var tooClose = cursorPositions.some(pos => {
-      const dx = pos.x - newX;
-      const dy = pos.y - newY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      return distance < minDistance;
-    });
-  } while (tooClose); // Repeat until a position that's not too close to other cursors is found
+  document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
 
-  // Store the new position
-  cursorPositions.push({ x: newX, y: newY });
+      // Calculate new position for the button
+      let buttonX = mouseX + offset;
+      let buttonY = mouseY + offset;
 
-  cursor.style.transition = 'transform 0.5s ease'; // Faster transition
-  cursor.style.transform = `translate(${newX}px, ${newY}px)`;
-  setTimeout(() => {
-    requestAnimationFrame(() => moveCursor(cursor)); // Move cursor continuously after a delay
-  }, 100); // Adjust the delay between cursor movements
-}
+      // Apply the new position
+      button.style.left = `${buttonX}px`;
+      button.style.top = `${buttonY}px`;
 
-// Create multiple dummy cursors
-document.addEventListener('DOMContentLoaded', function() {
-  for (let i = 0; i < 100; i++) {
-    setTimeout(createCursor, i * 60); // Create cursors with a delay
+      // Make the button unclickable
+      button.style.pointerEvents = 'none';
+  });
+
+  // Function to load the YouTube video
+  function loadYouTubeVideo() {
+      const playerDiv = document.getElementById('player');
+      const videoId = 'Vpww1lRAkhE'; // Replace 'VIDEO_ID_HERE' with the ID of your YouTube video
+      const player = new YT.Player(playerDiv, {
+          height: '100%',
+          width: '100%',
+          videoId: videoId,
+          playerVars: {
+              autoplay: 1, // Autoplay the video
+              controls: 0, // Hide video controls
+              loop: 1, // Loop the video
+              playlist: videoId, // Required for loop to work
+              mute: 1, // Mute the video to bypass autoplay restrictions
+              rel: 0 // Do not show related videos at the end
+          },
+          events: {
+              'onReady': onPlayerReady
+          }
+      });
   }
+
+  // Function to be called when the player is ready
+  function onPlayerReady(event) {
+      const playerDiv = document.getElementById('player');
+      playerDiv.classList.add('loaded'); // Add the 'loaded' class to fade in the video
+
+      // Increase the playback speed progressively
+      let currentSpeed = 1;
+      const maxSpeed = 100000; // Maximum playback speed
+      const accelerationRate = 0.5; // Rate at which the speed increases
+      const accelerationInterval = 2000; // Interval to increase speed (in milliseconds)
+
+      const speedIncreaseInterval = setInterval(() => {
+          currentSpeed += accelerationRate;
+          if (currentSpeed > maxSpeed) {
+              clearInterval(speedIncreaseInterval); // Stop increasing speed when it reaches the maximum
+          } else {
+              event.target.setPlaybackRate(currentSpeed); // Set the playback speed
+          }
+      }, accelerationInterval);
+  }
+
+  // Initialize YouTube Player API after a delay
+  function initializeYouTubePlayer() {
+      if (typeof YT !== 'undefined' && YT.Player) {
+          loadYouTubeVideo();
+      } else {
+          setTimeout(initializeYouTubePlayer, 100);
+      }
+  }
+
+  // Call the initializeYouTubePlayer function after 7 seconds
+  setTimeout(initializeYouTubePlayer, 7000);
+
+  // Show alternatively button after about 30 seconds
+  setTimeout(() => {
+    const alternativelyButton = document.querySelector('.alternatively__button');
+    alternativelyButton.style.display = 'block';
+}, 18000);
 });
