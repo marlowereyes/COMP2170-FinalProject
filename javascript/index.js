@@ -41,5 +41,13 @@ function prevImage() {
 document.getElementById('nextBtn').addEventListener('click', nextImage);
 document.getElementById('prevBtn').addEventListener('click', prevImage);
 
-// Automatically switch to the next image every 3 seconds
 setInterval(nextImage, 3000);
+
+document.getElementById('toggleCarouselBtn').addEventListener('click', function() {
+    var carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer.style.display === 'none' || carouselContainer.style.display === '') {
+        carouselContainer.style.display = 'flex';
+    } else {
+        carouselContainer.style.display = 'none';
+    }
+});
