@@ -79,6 +79,13 @@ footer {
     border-radius: 0.5rem;
     color: white;
     display: none;
+    text-align: center;
+}
+
+.alternatively__button:hover {
+    background-color: #507084;
+    border: 3px solid #3e4554;
+    text-decoration: none;
 }
 
 .nav {
@@ -108,4 +115,11 @@ a {
 .nav__buttons p {
     display: flex;
     gap: 2rem;
+}
+
+.ytp-chrome-bottom,
+.ytp-chrome-top,
+.ytp-show-cards-title,
+.ytp-ce-element {
+    display: none !important;
 }

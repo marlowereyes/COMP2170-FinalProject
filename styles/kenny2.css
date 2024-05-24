@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Lexend;
+}
+
+body {
+    margin: 0;
+    background-image: url("/images/yungle.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #075880;
+    color: #ECEBE9;
+}
+
+.nav {
+    background-color: #075880;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+}
+
+a:visited {
+    color: #ECEBE9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: #ECEBE9;
+    text-decoration: none;
+}
+
+.nav__buttons p {
+    display: flex;
+    gap: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.its__gold {
+    background: linear-gradient(45deg, #ffe078, #ffa500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10rem;
+    margin-top: 10rem;
+}
+
+.banana__buttons {
+    width: 28rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    background-color: #8ec0df;
+    border: 3px solid #6987C9;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.banana__buttons:hover {
+    background-color: #507084;
+    border: 3px solid #3e4554;
+    text-decoration: none;
+}
