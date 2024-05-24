@@ -1,3 +1,4 @@
+// Function to update header text and buttons
 function updateHeaderText() {
     const headerText = document.querySelector('.de-main h1');
     headerText.innerHTML = "Are you sure you're worthy of <span class='its__gold'>Golden Banana?</span>";
@@ -79,6 +80,8 @@ function updateButtonsForDecision() {
         updateHeaderText4();
         // Clear existing buttons and create a single "Return Home" button
         updateSingleButton2();
+        // Play audio files
+        playAudioFiles();
     });
     const button4 = document.createElement('button');
     button4.textContent = 'HAO am I supposed to know?';
@@ -91,6 +94,14 @@ function updateButtonsForDecision() {
     buttonsContainer.appendChild(button2);
     buttonsContainer.appendChild(button3);
     buttonsContainer.appendChild(button4);
+}
+
+// Function to play audio files
+function playAudioFiles() {
+    const audio1 = new Audio('./sounds/music.mp3'); // Replace with the actual path to your audio file
+    const audio2 = new Audio('./sounds/explode.mp3'); // Replace with the actual path to your audio file
+    audio1.play();
+    audio2.play();
 }
 
 // Function to update buttons to a single "Return Home" button
