@@ -1,4 +1,3 @@
-// Function to update header text and buttons
 function updateHeaderText() {
     const headerText = document.querySelector('.de-main h1');
     headerText.innerHTML = "Are you sure you're worthy of <span class='its__gold'>Golden Banana?</span>";
@@ -82,6 +81,8 @@ function updateButtonsForDecision() {
         updateSingleButton2();
         // Play audio files
         playAudioFiles();
+        // Display GIF over the background
+        displayGif();
     });
     const button4 = document.createElement('button');
     button4.textContent = 'HAO am I supposed to know?';
@@ -104,6 +105,20 @@ function playAudioFiles() {
     audio2.play();
 }
 
+// Function to display GIF
+function displayGif() {
+    const gif = document.createElement('img');
+    gif.src = './images/confetti.gif'; // Replace with the actual path to your GIF file
+    gif.style.position = 'absolute';
+    gif.style.top = '0';
+    gif.style.left = '0';
+    gif.style.width = '100%';
+    gif.style.height = '95%';
+    gif.style.objectFit = 'cover'; // Ensure the GIF covers the entire area
+    gif.style.zIndex = '0'; // Ensure the GIF is on top
+    gif.style.pointerEvents = 'none';
+    document.body.appendChild(gif);
+}
 // Function to update buttons to a single "Return Home" button
 function updateSingleButton() {
     const buttonsContainer = document.querySelector('.buttons');

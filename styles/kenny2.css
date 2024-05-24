@@ -95,6 +95,11 @@ a {
     margin-top: 16rem;
 }
 
+.banana__buttons2:hover {
+    background-color: #507084;
+    border: 3px solid #3e4554;
+}
+
 .banana__buttons:hover {
     background-color: #507084;
     border: 3px solid #3e4554;
