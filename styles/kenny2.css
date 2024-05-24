@@ -66,8 +66,12 @@ a {
 .buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10rem;
     margin-top: 10rem;
+    margin-left: 12rem;
+    width: 75%;
 }
 
 .banana__buttons {
@@ -80,8 +84,34 @@ a {
     color: white;
 }
 
+.banana__buttons2 {
+    width: 28rem;
+    height: 5rem;
+    font-size: 1.5rem;
+    background-color: #8ec0df;
+    border: 3px solid #6987C9;
+    border-radius: 0.5rem;
+    color: white;
+    margin-top: 16rem;
+}
+
 .banana__buttons:hover {
     background-color: #507084;
     border: 3px solid #3e4554;
     text-decoration: none;
+}
+
+@keyframes rainbowText {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: green; }
+    57% { color: blue; }
+    71% { color: indigo; }
+    85% { color: violet; }
+    100% { color: red; }
+}
+
+.rainbow {
+    animation: rainbowText 5s linear infinite;
 }
