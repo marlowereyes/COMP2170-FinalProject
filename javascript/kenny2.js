@@ -18,70 +18,61 @@ function updateHeaderText4() {
     headerText.innerHTML = "<span class='rainbow'>Congratulation! You got a</span> <span class='its__gold'>Golden Banana!</span>";
 }
 
-// Function to update buttons
 function updateButtons() {
     const buttonsContainer = document.querySelector('.buttons');
-    // Clear existing buttons
     buttonsContainer.innerHTML = '';
-    // Create new buttons
+
     const button1 = document.createElement('button');
     button1.textContent = 'what?';
     button1.className = 'banana__buttons';
     button1.addEventListener('click', function() {
         handleNotWorthy();
+        playAudioFiles2();
     });
     const button2 = document.createElement('button');
     button2.textContent = 'HAO could you think otherwise?';
     button2.className = 'banana__buttons';
     button2.addEventListener('click', function() {
         updateHeaderText3();
-        // Clear existing buttons and create new buttons
         updateButtonsForDecision();
     });
-    // Append new buttons to the container
     buttonsContainer.appendChild(button1);
     buttonsContainer.appendChild(button2);
 }
 
-// Function to handle the "You are not worthy" scenario
 function handleNotWorthy() {
     updateHeaderText2();
-    // Change background image
     document.body.style.backgroundImage = "url('./images/sadbanana.png')";
-    // Clear existing buttons and create a single "Return Home" button
     updateSingleButton();
 }
 
-// Function to update buttons for decision
+
 function updateButtonsForDecision() {
     const buttonsContainer = document.querySelector('.buttons');
-    // Clear existing buttons
     buttonsContainer.innerHTML = '';
-    // Create new buttons
+
     const button1 = document.createElement('button');
     button1.textContent = 'Yes.';
     button1.className = 'banana__buttons';
     button1.addEventListener('click', function() {
         handleNotWorthy();
+        playAudioFiles2();
     });
     const button2 = document.createElement('button');
     button2.textContent = 'A HAOuse coat';
     button2.className = 'banana__buttons';
     button2.addEventListener('click', function() {
         handleNotWorthy();
+        playAudioFiles2();
     });
     const button3 = document.createElement('button');
     button3.textContent = 'A dress';
     button3.className = 'banana__buttons';
     button3.addEventListener('click', function() {
-        // Change background image
         document.body.style.backgroundImage = "url('./images/banana.webp')";
         updateHeaderText4();
-        // Clear existing buttons and create a single "Return Home" button
         updateSingleButton2();
-        // Play audio files
         playAudioFiles();
-        // Display GIF over the background
         displayGif();
     });
     const button4 = document.createElement('button');
@@ -89,37 +80,43 @@ function updateButtonsForDecision() {
     button4.className = 'banana__buttons';
     button4.addEventListener('click', function() {
         handleNotWorthy();
+        playAudioFiles2();
     });
-    // Append new buttons to the container
+  
     buttonsContainer.appendChild(button1);
     buttonsContainer.appendChild(button2);
     buttonsContainer.appendChild(button3);
     buttonsContainer.appendChild(button4);
 }
 
-// Function to play audio files
+
 function playAudioFiles() {
-    const audio1 = new Audio('./sounds/music.mp3'); // Replace with the actual path to your audio file
-    const audio2 = new Audio('./sounds/explode.mp3'); // Replace with the actual path to your audio file
+    const audio1 = new Audio('./sounds/music.mp3'); 
+    const audio2 = new Audio('./sounds/explode.mp3'); 
     audio1.play();
     audio2.play();
 }
 
-// Function to display GIF
+function playAudioFiles2() {
+    const audio1 = new Audio('./sounds/meme.mp3'); 
+    audio1.play();
+}
+
+
 function displayGif() {
     const gif = document.createElement('img');
-    gif.src = './images/confetti.gif'; // Replace with the actual path to your GIF file
+    gif.src = './images/confetti.gif'; 
     gif.style.position = 'absolute';
     gif.style.top = '0';
     gif.style.left = '0';
     gif.style.width = '100%';
     gif.style.height = '95%';
-    gif.style.objectFit = 'cover'; // Ensure the GIF covers the entire area
-    gif.style.zIndex = '0'; // Ensure the GIF is on top
+    gif.style.objectFit = 'cover'; 
+    gif.style.zIndex = '0'; 
     gif.style.pointerEvents = 'none';
     document.body.appendChild(gif);
 }
-// Function to update buttons to a single "Return Home" button
+
 function updateSingleButton() {
     const buttonsContainer = document.querySelector('.buttons');
     buttonsContainer.innerHTML = '';
@@ -144,7 +141,6 @@ function updateSingleButton2() {
     buttonsContainer.appendChild(returnHomeButton);
 }
 
-// Add event listeners to existing buttons
 document.querySelectorAll('.banana__buttons').forEach(button => {
     button.addEventListener('click', function() {
         updateHeaderText();
